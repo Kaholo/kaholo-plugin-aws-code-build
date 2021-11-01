@@ -1,0 +1,225 @@
+{
+  "name": "AWS-Code-Build",
+  "type": "executer",
+  "imgUrl": "logo.png",
+  "execProgram": "node",
+  "main": "app.js",
+  "version": "1.0.0",
+  "description": "Integration with AWS Code Build API.",
+  "category": "CI-CD",
+  "keywords": ["aws", "amazon", "code", "cloud", "cluster", "vm", "cli", "instance", "service"],
+  "settings": [
+    {
+      "name": "accessKeyId",
+      "viewName": "Access key",
+      "type": "string",
+      "description": "The access key ID of the default user to use to authenticate to AWS."
+    },
+    {
+      "name": "secretAccessKey",
+      "viewName": "Secret key",
+      "type": "vault",
+      "description": "The access key secret of the default user to use to authenticate to AWS."
+    },
+    {
+      "name": "region",
+      "viewName": "Region",
+      "type": "string",
+      "description": "The default AWS region to make requests on."
+    }
+  ],
+  "methods": [
+    {
+      "name": "startBuild",
+      "viewName": "Start Build",
+      "params": [
+        {
+          "name": "accessKeyId",
+          "viewName": "Access key",
+          "type": "string",
+          "description": "The access key ID of the user to use to authenticate to AWS for this request."
+        },
+        {
+          "name": "secretAccessKey",
+          "viewName": "Secret key",
+          "type": "vault",
+          "description": "The access key secret of the user to use to authenticate to AWS for this request."
+        },
+        {
+          "name": "region",
+          "viewName": "Region",
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listRegionsAuto",
+          "description": "The AWS region to make this request on."
+        },
+        {
+          "name": "project",
+          "viewName": "Project",
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listProjectsAuto",
+          "description": "The Code Build project to build."
+        },
+        {
+          "name": "sourceVersion",
+          "viewName": "Source Version",
+          "type": "string",
+          "description": "The version of the build input to be built, for this build only. If not specified, the latest version is used. Expected value depands on type of source code for this project.",
+          "learnUrl": "https://docs.aws.amazon.com/codebuild/latest/userguide/sample-source-version.html"
+        },
+        {
+          "name": "debugSessionEnabled",
+          "viewName": "Enable Debug Session",
+          "type": "boolean",
+          "description": "Specifies if session debugging is enabled for this build.",
+          "learnUrl": "https://docs.aws.amazon.com/codebuild/latest/userguide/session-manager.html"
+        }
+      ]
+    },
+    {
+      "name": "stopBuild",
+      "viewName": "Stop Build",
+      "params": [
+        {
+          "name": "accessKeyId",
+          "viewName": "Access key",
+          "type": "string",
+          "description": "The access key ID of the user to use to authenticate to AWS for this request."
+        },
+        {
+          "name": "secretAccessKey",
+          "viewName": "Secret key",
+          "type": "vault",
+          "description": "The access key secret of the user to use to authenticate to AWS for this request."
+        },
+        {
+          "name": "region",
+          "viewName": "Region",
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listRegionsAuto",
+          "description": "The AWS region to make this request on."
+        },
+        {
+          "name": "project",
+          "viewName": "Project",
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listProjectsAuto",
+          "description": "The Code Build project of the build to stop."
+        },
+        {
+          "name": "build",
+          "viewName": "Build",
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listBuildsAuto",
+          "description": "The build to stop."
+        }
+      ]
+    },
+    {
+      "name": "getBuilds",
+      "viewName": "Get Builds",
+      "params": [
+        {
+          "name": "accessKeyId",
+          "viewName": "Access key",
+          "type": "string",
+          "description": "The access key ID of the user to use to authenticate to AWS for this request."
+        },
+        {
+          "name": "secretAccessKey",
+          "viewName": "Secret key",
+          "type": "vault",
+          "description": "The access key secret of the user to use to authenticate to AWS for this request."
+        },
+        {
+          "name": "region",
+          "viewName": "Region",
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listRegionsAuto",
+          "description": "The AWS region to make this request on."
+        },
+        {
+          "name": "project",
+          "viewName": "Project",
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listProjectsAuto",
+          "description": "The Code Build project of the builds to get information about."
+        },
+        {
+          "name": "builds",
+          "viewName": "Builds",
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listBuildsAuto",
+          "description": "The build(s) to stop. Can specify multiple builds by passing an array of builds to return information about."
+        }
+      ]
+    },
+    {
+      "name": "listProjects",
+      "viewName": "List Projects",
+      "params": [
+        {
+          "name": "accessKeyId",
+          "viewName": "Access key",
+          "type": "string",
+          "description": "The access key ID of the user to use to authenticate to AWS for this request."
+        },
+        {
+          "name": "secretAccessKey",
+          "viewName": "Secret key",
+          "type": "vault",
+          "description": "The access key secret of the user to use to authenticate to AWS for this request."
+        },
+        {
+          "name": "region",
+          "viewName": "Region",
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listRegionsAuto",
+          "description": "The AWS region to make this request on."
+        }
+      ]
+    },
+    {
+      "name": "listBuilds",
+      "viewName": "List Builds",
+      "params": [
+        {
+          "name": "accessKeyId",
+          "viewName": "Access key",
+          "type": "string",
+          "description": "The access key ID of the user to use to authenticate to AWS for this request."
+        },
+        {
+          "name": "secretAccessKey",
+          "viewName": "Secret key",
+          "type": "vault",
+          "description": "The access key secret of the user to use to authenticate to AWS for this request."
+        },
+        {
+          "name": "region",
+          "viewName": "Region",
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listRegionsAuto",
+          "description": "The AWS region to make this request on."
+        },
+        {
+          "name": "project",
+          "viewName": "Project",
+          "type": "autocomplete",
+          "autocompleteType": "function",
+          "functionName": "listProjectsAuto",
+          "description": "If specified, only return builds of this project."
+        }
+      ]
+    }
+  ]
+}
