@@ -63,6 +63,38 @@ ${error.message || JSON.stringify(error)}'`
         }
     }
     
+    async createProjectFromJson({project}){
+        if (!project || !Object.keys(project).length){ 
+            throw "Didn't provide an object or provided object was empty.";
+        }
+        return this.cb.createProject(project).promise();
+    }
+    
+    async updateProjectFromJson({project}){
+        if (!project || !Object.keys(project).length){ 
+            throw "Didn't provide an object or provided object was empty.";
+        }
+        return this.cb.updateProject(project).promise();
+    }
+
+    async getProject({project}){
+        if (!project){
+            throw "Didn't provide a project to return information about.";
+        }
+        const result = await this.cb.batchGetProjects({names: [project]}).promise();
+        if (result.projectsNotFound && result.projectsNotFound.length) {
+            throw `Couldn't find project '${project}'`;
+        }
+        return result.projects[0];
+    }
+
+    async deleteProject({project}){
+        if (!project){
+            throw "Didn't provide a project to delete.";
+        }
+        return this.cb.deleteProject({name: project}).promise();
+    }
+    
     async listRegions(){
         const {Regions: result} = await this.aws.describeRegions({});
         return result;

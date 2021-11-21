@@ -41,6 +41,44 @@ Get all information on the specified build(s).
 4. Project (Autocomplete) **Optional** - The Code Build project of the builds to get information about. Used to filter builds in the 'Build" parameter.
 5. Builds (Autocomplete) **Required** - The build(s) to stop. Can specify multiple builds by passing an array of build IDs to return information about.
 
+## Method: Create Project From JSON
+Create a new CodeBuild project from the specified JSON parameters file.
+
+## Parameters
+1. Access key (String) **Required if not in settings** - The access key ID of the user to use to authenticate to AWS for this request.
+2. Secret key (Vault) **Required if not in settings** - The access key secret of the user to use to authenticate to AWS for this request.
+3. Region (Autocomplete) **Required if not in settings** - The AWS region to make this request on.
+4. Project JSON (Text) **Required** - The JSON object, containing the parameters to create the CodeBuild project from. Can be passed either as it's local path on the agent or from code as a JavaScript object.
+[Learn More](https://docs.aws.amazon.com/codebuild/latest/userguide/create-project-cli.html)
+
+## Method: Update Project From JSON
+Update a CodeBuild project using the specified JSON parameters file.
+
+## Parameters
+1. Access key (String) **Required if not in settings** - The access key ID of the user to use to authenticate to AWS for this request.
+2. Secret key (Vault) **Required if not in settings** - The access key secret of the user to use to authenticate to AWS for this request.
+3. Region (Autocomplete) **Required if not in settings** - The AWS region to make this request on.
+4. Project JSON (Text) **Required** - The JSON object, containing the parameters to update the CodeBuild project from. Can be passed either as it's local path on the agent or from code as a JavaScript object.
+[Learn More](https://docs.aws.amazon.com/codebuild/latest/userguide/change-project-cli.html)
+
+## Method: Get Project
+Get information about the specified CodeBuild project.
+
+## Parameters
+1. Access key (String) **Required if not in settings** - The access key ID of the user to use to authenticate to AWS for this request.
+2. Secret key (Vault) **Required if not in settings** - The access key secret of the user to use to authenticate to AWS for this request.
+3. Region (Autocomplete) **Required if not in settings** - The AWS region to make this request on.
+4. Project (Autocomplete) **Required** - The CodeBuild project to return information about.
+
+## Method: Delete Project
+Delete the specified CodeBuild project.
+
+## Parameters
+1. Access key (String) **Required if not in settings** - The access key ID of the user to use to authenticate to AWS for this request.
+2. Secret key (Vault) **Required if not in settings** - The access key secret of the user to use to authenticate to AWS for this request.
+3. Region (Autocomplete) **Required if not in settings** - The AWS region to make this request on.
+4. Project (Autocomplete) **Required** - The CodeBuild project to delete.
+
 ## Method: List Projects
 List all Code Build project names on this AWS account.
 

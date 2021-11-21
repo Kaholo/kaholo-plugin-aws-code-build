@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 function parseArray(value){
     if (!value) return [];
     if (Array.isArray(value)) return value;
@@ -32,6 +34,22 @@ module.exports = {
         if (!value) return undefined;
         if (typeof(value) !== "object") throw `Value ${value} is not an object`;
         return value;
+    },
+    objectOrFromPath: (value)=>{
+        if (!value) return undefined;
+        if (typeof(value) === "string"){
+            if (!fs.existsSync(value)) throw `Couldn't find file '${value}'.`;
+            const fileContent = fs.readFileSync(value, 'utf8');
+            try {
+                const obj = JSON.parse(fileContent);
+                return obj;
+            }
+            catch {
+                throw `The file '${value}' doesn't contain a valid JSON.`
+            }
+        }
+        if (typeof(value) === "object") return value;
+        throw `value ${value} is not a valid object or a file path`;
     },
     string: (value)=>{
         if (!value) return undefined;
