@@ -21,7 +21,31 @@ async function getBuilds(action, settings){
 	const builds = parsers.autocomplete(action.params.builds);
     const client = CodeBuildService.from(action.params, settings);
     return client.getBuilds({builds});
-} 
+}
+
+async function createProjectFromJson(action, settings){
+	const project = parsers.objectOrFromPath(action.params.projectJson);
+    const client = CodeBuildService.from(action.params, settings);
+    return client.createProjectFromJson({project});
+}
+
+async function updateProjectFromJson(action, settings){
+	const project = parsers.objectOrFromPath(action.params.projectJson);
+    const client = CodeBuildService.from(action.params, settings);
+    return client.updateProjectFromJson({project});
+}
+
+async function getProject(action, settings){
+	const project = parsers.autocomplete(action.params.project);
+    const client = CodeBuildService.from(action.params, settings);
+    return client.getProject({project});
+}
+
+async function deleteProject(action, settings){
+	const project = parsers.autocomplete(action.params.project);
+    const client = CodeBuildService.from(action.params, settings);
+    return client.deleteProject({project});
+}
 
 async function listProjects(action, settings){
     const client = CodeBuildService.from(action.params, settings);
@@ -38,8 +62,13 @@ module.exports = {
     startBuild,
 	stopBuild,
 	getBuilds,
+    createProjectFromJson,
+    updateProjectFromJson,
+    getProject,
+    deleteProject,
+    // list methods
     listProjects,
     listBuilds,
-// Autocomplete Functions
+    // Autocomplete Functions
     ...require("./autocomplete")
 }
