@@ -39,7 +39,7 @@ Get all information on the specified build(s).
 2. Secret key (Vault) **Required if not in settings** - The access key secret of the user to use to authenticate to AWS for this request.
 3. Region (Autocomplete) **Required if not in settings** - The AWS region to make this request on.
 4. Project (Autocomplete) **Optional** - The Code Build project of the builds to get information about. Used to filter builds in the 'Build" parameter.
-5. Builds (Autocomplete) **Required** - The build(s) to stop. Can specify multiple builds by passing an array of build IDs to return information about.
+5. Builds (Autocomplete) **Required** - The build(s) to get information about. Can specify multiple builds by passing an array of build IDs to return information about.
 
 ## Method: Create Project From JSON
 Create a new CodeBuild project from the specified JSON parameters file.
