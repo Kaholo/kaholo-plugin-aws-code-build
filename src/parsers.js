@@ -30,6 +30,12 @@ module.exports = {
         if (typeof(value) !== "object") return value;
         return value.id;
     },
+    autocompleteOrArray: (value)=>{
+        if (!value) return [];
+        if (Array.isArray(value)) return value;
+        if (typeof(value) == "object") return [value.id || value];
+        return [value];
+    },
     object: (value)=>{
         if (!value) return undefined;
         if (typeof(value) !== "object") throw `Value ${value} is not an object`;
