@@ -4,10 +4,20 @@
   "imgUrl": "logo.png",
   "execProgram": "node",
   "main": "app.js",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Integration with AWS CodeBuild API.",
   "category": "CI-CD",
-  "keywords": ["aws", "amazon", "code", "cloud", "cluster", "vm", "cli", "instance", "service"],
+  "keywords": [
+    "aws",
+    "amazon",
+    "code",
+    "cloud",
+    "cluster",
+    "vm",
+    "cli",
+    "instance",
+    "service"
+  ],
   "settings": [
     {
       "name": "accessKeyId",
@@ -37,13 +47,17 @@
           "name": "accessKeyId",
           "viewName": "Access key",
           "type": "string",
-          "description": "The access key ID of the user to use to authenticate to AWS for this request."
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "AKIAIOSFODNN7EXAMPLE",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
         },
         {
           "name": "secretAccessKey",
           "viewName": "Secret key",
           "type": "vault",
-          "description": "The access key secret of the user to use to authenticate to AWS for this request."
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
         },
         {
           "name": "region",
@@ -51,7 +65,9 @@
           "type": "autocomplete",
           "autocompleteType": "function",
           "functionName": "listRegionsAuto",
-          "description": "The AWS region to make this request on."
+          "description": "The AWS region to make this request on.",
+          "placeholder": "us-east-2",
+          "learnUrl": "https://docs.aws.amazon.com/general/latest/gr/s3.html"
         },
         {
           "name": "project",
@@ -59,21 +75,24 @@
           "type": "autocomplete",
           "autocompleteType": "function",
           "functionName": "listProjectsAuto",
-          "description": "The CodeBuild project to build."
+          "description": "Project resource configures how AWS CodeBuild builds your source code. It tells CodeBuild where to get the source code and which build environment to use.",
+          "placeholder": "myproject",
+          "learnUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codebuild-project.html"
         },
         {
           "name": "sourceVersion",
           "viewName": "Source Version",
           "type": "string",
-          "description": "The version of the build input to be built, for this build only. If not specified, the latest version is used. Expected value depands on type of source code for this project.",
-          "learnUrl": "https://docs.aws.amazon.com/codebuild/latest/userguide/sample-source-version.html"
+          "description": "Version on the created build to input.",
+          "learnUrl": "https://docs.aws.amazon.com/codebuild/latest/APIReference/API_ProjectSourceVersion.html",
+          "placeholder": "1.0.0"
         },
         {
           "name": "debugSessionEnabled",
           "viewName": "Enable Debug Session",
           "type": "boolean",
-          "description": "Specifies if session debugging is enabled for this build.",
-          "learnUrl": "https://docs.aws.amazon.com/codebuild/latest/userguide/session-manager.html"
+          "description": "Ability to enable a debug session to the created build.",
+          "learnUrl": "https://docs.aws.amazon.com/codebuild/latest/APIReference/API_DebugSession.html"
         }
       ]
     },
@@ -85,13 +104,17 @@
           "name": "accessKeyId",
           "viewName": "Access key",
           "type": "string",
-          "description": "The access key ID of the user to use to authenticate to AWS for this request."
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "AKIAIOSFODNN7EXAMPLE",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
         },
         {
           "name": "secretAccessKey",
           "viewName": "Secret key",
           "type": "vault",
-          "description": "The access key secret of the user to use to authenticate to AWS for this request."
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
         },
         {
           "name": "region",
@@ -99,7 +122,9 @@
           "type": "autocomplete",
           "autocompleteType": "function",
           "functionName": "listRegionsAuto",
-          "description": "The AWS region to make this request on."
+          "description": "The AWS region to make this request on.",
+          "placeholder": "us-east-2",
+          "learnUrl": "https://docs.aws.amazon.com/general/latest/gr/s3.html"
         },
         {
           "name": "project",
@@ -107,7 +132,9 @@
           "type": "autocomplete",
           "autocompleteType": "function",
           "functionName": "listProjectsAuto",
-          "description": "The CodeBuild project of the build to stop."
+          "description": "Project resource configures how AWS CodeBuild builds your source code. It tells CodeBuild where to get the source code and which build environment to use.",
+          "placeholder": "myproject",
+          "learnUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codebuild-project.html"
         },
         {
           "name": "build",
@@ -115,7 +142,9 @@
           "type": "autocomplete",
           "autocompleteType": "function",
           "functionName": "listBuildsAuto",
-          "description": "The build to stop."
+          "description": "Name of the build to stop.",
+          "placeholder": "mybuild",
+          "learnUrl": "https://docs.aws.amazon.com/codebuild/latest/userguide/stop-build.html"
         }
       ]
     },
@@ -127,13 +156,17 @@
           "name": "accessKeyId",
           "viewName": "Access key",
           "type": "string",
-          "description": "The access key ID of the user to use to authenticate to AWS for this request."
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "AKIAIOSFODNN7EXAMPLE",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
         },
         {
           "name": "secretAccessKey",
           "viewName": "Secret key",
           "type": "vault",
-          "description": "The access key secret of the user to use to authenticate to AWS for this request."
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
         },
         {
           "name": "region",
@@ -141,7 +174,9 @@
           "type": "autocomplete",
           "autocompleteType": "function",
           "functionName": "listRegionsAuto",
-          "description": "The AWS region to make this request on."
+          "description": "The AWS region to make this request on.",
+          "placeholder": "us-east-2",
+          "learnUrl": "https://docs.aws.amazon.com/general/latest/gr/s3.html"
         },
         {
           "name": "project",
@@ -149,7 +184,9 @@
           "type": "autocomplete",
           "autocompleteType": "function",
           "functionName": "listProjectsAuto",
-          "description": "The CodeBuild project of the builds to get information about."
+          "description": "Project resource configures how AWS CodeBuild builds your source code. It tells CodeBuild where to get the source code and which build environment to use.",
+          "placeholder": "myproject",
+          "learnUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codebuild-project.html"
         },
         {
           "name": "builds",
@@ -157,7 +194,8 @@
           "type": "autocomplete",
           "autocompleteType": "function",
           "functionName": "listBuildsAuto",
-          "description": "The build(s) to stop. Can specify multiple builds by passing an array of builds to return information about."
+          "description": "Specify multiple builds to get by an array of IDs.",
+          "learnUrl": "https://docs.aws.amazon.com/codebuild/latest/userguide/stop-build.html"
         }
       ]
     },
@@ -169,13 +207,17 @@
           "name": "accessKeyId",
           "viewName": "Access key",
           "type": "string",
-          "description": "The access key ID of the user to use to authenticate to AWS for this request."
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "AKIAIOSFODNN7EXAMPLE",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
         },
         {
           "name": "secretAccessKey",
           "viewName": "Secret key",
           "type": "vault",
-          "description": "The access key secret of the user to use to authenticate to AWS for this request."
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
         },
         {
           "name": "region",
@@ -183,15 +225,17 @@
           "type": "autocomplete",
           "autocompleteType": "function",
           "functionName": "listRegionsAuto",
-          "description": "The AWS region to make this request on."
+          "description": "The AWS region to make this request on.",
+          "placeholder": "us-east-2",
+          "learnUrl": "https://docs.aws.amazon.com/general/latest/gr/s3.html"
         },
         {
           "name": "projectJson",
           "viewName": "Project JSON",
           "type": "text",
-          "description": "The JSON object, containing the parameters to create the CodeBuild project from. Can be passed either as it's local path on the agent or from code as a JavaScript object.",
+          "description": "Updating our project using a JSON file.",
           "placeholder": "C:/Work/TestProject.json",
-          "learnUrl": "https://docs.aws.amazon.com/codebuild/latest/userguide/create-project-cli.html"
+          "learnUrl": "https://docs.aws.amazon.com/codebuild/latest/userguide/getting-started-cli-create-build-project.html"
         }
       ]
     },
@@ -237,13 +281,17 @@
           "name": "accessKeyId",
           "viewName": "Access key",
           "type": "string",
-          "description": "The access key ID of the user to use to authenticate to AWS for this request."
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "AKIAIOSFODNN7EXAMPLE",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
         },
         {
           "name": "secretAccessKey",
           "viewName": "Secret key",
           "type": "vault",
-          "description": "The access key secret of the user to use to authenticate to AWS for this request."
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
         },
         {
           "name": "region",
@@ -251,7 +299,9 @@
           "type": "autocomplete",
           "autocompleteType": "function",
           "functionName": "listRegionsAuto",
-          "description": "The AWS region to make this request on."
+          "description": "The AWS region to make this request on.",
+          "placeholder": "us-east-2",
+          "learnUrl": "https://docs.aws.amazon.com/general/latest/gr/s3.html"
         },
         {
           "name": "project",
@@ -259,7 +309,9 @@
           "type": "autocomplete",
           "autocompleteType": "function",
           "functionName": "listProjectsAuto",
-          "description": "The CodeBuild project to return information about."
+          "description": "Project resource configures how AWS CodeBuild builds your source code. It tells CodeBuild where to get the source code and which build environment to use.",
+          "placeholder": "myproject",
+          "learnUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codebuild-project.html"
         }
       ]
     },
@@ -271,13 +323,17 @@
           "name": "accessKeyId",
           "viewName": "Access key",
           "type": "string",
-          "description": "The access key ID of the user to use to authenticate to AWS for this request."
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "AKIAIOSFODNN7EXAMPLE",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
         },
         {
           "name": "secretAccessKey",
           "viewName": "Secret key",
           "type": "vault",
-          "description": "The access key secret of the user to use to authenticate to AWS for this request."
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
         },
         {
           "name": "region",
@@ -285,7 +341,9 @@
           "type": "autocomplete",
           "autocompleteType": "function",
           "functionName": "listRegionsAuto",
-          "description": "The AWS region to make this request on."
+          "description": "The AWS region to make this request on.",
+          "placeholder": "us-east-2",
+          "learnUrl": "https://docs.aws.amazon.com/general/latest/gr/s3.html"
         },
         {
           "name": "project",
@@ -293,7 +351,9 @@
           "type": "autocomplete",
           "autocompleteType": "function",
           "functionName": "listProjectsAuto",
-          "description": "The CodeBuild project to delete."
+          "description": "Project resource configures how AWS CodeBuild builds your source code. It tells CodeBuild where to get the source code and which build environment to use.",
+          "placeholder": "myproject",
+          "learnUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codebuild-project.html"
         }
       ]
     },
@@ -305,13 +365,17 @@
           "name": "accessKeyId",
           "viewName": "Access key",
           "type": "string",
-          "description": "The access key ID of the user to use to authenticate to AWS for this request."
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "AKIAIOSFODNN7EXAMPLE",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
         },
         {
           "name": "secretAccessKey",
           "viewName": "Secret key",
           "type": "vault",
-          "description": "The access key secret of the user to use to authenticate to AWS for this request."
+          "description": "This is a parameter taken from the vault to access AWS.",
+          "placeholder": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
         },
         {
           "name": "region",
@@ -319,7 +383,9 @@
           "type": "autocomplete",
           "autocompleteType": "function",
           "functionName": "listRegionsAuto",
-          "description": "The AWS region to make this request on."
+          "description": "The AWS region to make this request on.",
+          "placeholder": "us-east-2",
+          "learnUrl": "https://docs.aws.amazon.com/general/latest/gr/s3.html"
         }
       ]
     },
@@ -331,13 +397,17 @@
           "name": "accessKeyId",
           "viewName": "Access key",
           "type": "string",
-          "description": "The access key ID of the user to use to authenticate to AWS for this request."
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "AKIAIOSFODNN7EXAMPLE",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
         },
         {
           "name": "secretAccessKey",
           "viewName": "Secret key",
           "type": "vault",
-          "description": "The access key secret of the user to use to authenticate to AWS for this request."
+          "description": "This is a parameter taken from the vault to access AWS",
+          "placeholder": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
         },
         {
           "name": "region",
@@ -345,7 +415,9 @@
           "type": "autocomplete",
           "autocompleteType": "function",
           "functionName": "listRegionsAuto",
-          "description": "The AWS region to make this request on."
+          "description": "The AWS region to make this request on.",
+          "placeholder": "us-east-2",
+          "learnUrl": "https://docs.aws.amazon.com/general/latest/gr/s3.html"
         },
         {
           "name": "project",
@@ -353,7 +425,9 @@
           "type": "autocomplete",
           "autocompleteType": "function",
           "functionName": "listProjectsAuto",
-          "description": "If specified, only return builds of this project."
+          "description": "Project resource configures how AWS CodeBuild builds your source code. It tells CodeBuild where to get the source code and which build environment to use.",
+          "placeholder": "myproject",
+          "learnUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codebuild-project.html"
         }
       ]
     }
