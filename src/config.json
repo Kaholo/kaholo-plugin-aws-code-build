@@ -1,12 +1,13 @@
 {
-  "name": "AWS-Code-Build",
+  "id": "aws-codebuild",
+  "name": "AWS CodeBuild",
   "type": "executer",
   "imgUrl": "logo.png",
   "execProgram": "node",
   "main": "app.js",
   "version": "1.1.3",
   "description": "Integration with AWS CodeBuild API.",
-  "category": "MONITORING",
+  "category": "CI/CD",
   "keywords": [
     "aws",
     "amazon",
