@@ -196,7 +196,7 @@
           "autocompleteType": "function",
           "functionName": "listBuildsAuto",
           "description": "Specify multiple builds to get by an array of IDs.",
-          "learnUrl": "https://docs.aws.amazon.com/codebuild/latest/userguide/stop-build.html"
+          "learnUrl": "https://docs.aws.amazon.com/codebuild/latest/userguide/view-build-details.html"
         }
       ]
     },
