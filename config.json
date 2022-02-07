@@ -5,7 +5,7 @@
   "imgUrl": "logo.png",
   "execProgram": "node",
   "main": "app.js",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "description": "Integration with AWS CodeBuild API.",
   "category": "CI/CD",
   "keywords": [
@@ -23,7 +23,7 @@
     {
       "name": "accessKeyId",
       "viewName": "Access key",
-      "type": "string",
+      "type": "vault",
       "description": "The access key ID of the default user to use to authenticate to AWS."
     },
     {
@@ -47,7 +47,7 @@
         {
           "name": "accessKeyId",
           "viewName": "Access key",
-          "type": "string",
+          "type": "vault",
           "description": "This is a parameter taken from the vault to access AWS",
           "placeholder": "AKIAIOSFODNN7EXAMPLE",
           "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
@@ -65,7 +65,7 @@
           "viewName": "Region",
           "type": "autocomplete",
           "autocompleteType": "function",
-          "functionName": "listRegionsAuto",
+          "functionName": "listRegions",
           "description": "The AWS region to make this request on.",
           "placeholder": "us-east-2",
           "learnUrl": "https://docs.aws.amazon.com/general/latest/gr/s3.html"
@@ -104,7 +104,7 @@
         {
           "name": "accessKeyId",
           "viewName": "Access key",
-          "type": "string",
+          "type": "vault",
           "description": "This is a parameter taken from the vault to access AWS",
           "placeholder": "AKIAIOSFODNN7EXAMPLE",
           "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
@@ -122,7 +122,7 @@
           "viewName": "Region",
           "type": "autocomplete",
           "autocompleteType": "function",
-          "functionName": "listRegionsAuto",
+          "functionName": "listRegions",
           "description": "The AWS region to make this request on.",
           "placeholder": "us-east-2",
           "learnUrl": "https://docs.aws.amazon.com/general/latest/gr/s3.html"
@@ -156,7 +156,7 @@
         {
           "name": "accessKeyId",
           "viewName": "Access key",
-          "type": "string",
+          "type": "vault",
           "description": "This is a parameter taken from the vault to access AWS",
           "placeholder": "AKIAIOSFODNN7EXAMPLE",
           "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
@@ -174,7 +174,7 @@
           "viewName": "Region",
           "type": "autocomplete",
           "autocompleteType": "function",
-          "functionName": "listRegionsAuto",
+          "functionName": "listRegions",
           "description": "The AWS region to make this request on.",
           "placeholder": "us-east-2",
           "learnUrl": "https://docs.aws.amazon.com/general/latest/gr/s3.html"
@@ -207,7 +207,7 @@
         {
           "name": "accessKeyId",
           "viewName": "Access key",
-          "type": "string",
+          "type": "vault",
           "description": "This is a parameter taken from the vault to access AWS",
           "placeholder": "AKIAIOSFODNN7EXAMPLE",
           "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
@@ -225,7 +225,7 @@
           "viewName": "Region",
           "type": "autocomplete",
           "autocompleteType": "function",
-          "functionName": "listRegionsAuto",
+          "functionName": "listRegions",
           "description": "The AWS region to make this request on.",
           "placeholder": "us-east-2",
           "learnUrl": "https://docs.aws.amazon.com/general/latest/gr/s3.html"
@@ -247,7 +247,7 @@
         {
           "name": "accessKeyId",
           "viewName": "Access key",
-          "type": "string",
+          "type": "vault",
           "description": "The access key ID of the user to use to authenticate to AWS for this request."
         },
         {
@@ -261,7 +261,7 @@
           "viewName": "Region",
           "type": "autocomplete",
           "autocompleteType": "function",
-          "functionName": "listRegionsAuto",
+          "functionName": "listRegions",
           "description": "The AWS region to make this request on."
         },
         {
@@ -281,7 +281,7 @@
         {
           "name": "accessKeyId",
           "viewName": "Access key",
-          "type": "string",
+          "type": "vault",
           "description": "This is a parameter taken from the vault to access AWS",
           "placeholder": "AKIAIOSFODNN7EXAMPLE",
           "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
@@ -299,7 +299,7 @@
           "viewName": "Region",
           "type": "autocomplete",
           "autocompleteType": "function",
-          "functionName": "listRegionsAuto",
+          "functionName": "listRegions",
           "description": "The AWS region to make this request on.",
           "placeholder": "us-east-2",
           "learnUrl": "https://docs.aws.amazon.com/general/latest/gr/s3.html"
@@ -323,7 +323,7 @@
         {
           "name": "accessKeyId",
           "viewName": "Access key",
-          "type": "string",
+          "type": "vault",
           "description": "This is a parameter taken from the vault to access AWS",
           "placeholder": "AKIAIOSFODNN7EXAMPLE",
           "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
@@ -341,7 +341,7 @@
           "viewName": "Region",
           "type": "autocomplete",
           "autocompleteType": "function",
-          "functionName": "listRegionsAuto",
+          "functionName": "listRegions",
           "description": "The AWS region to make this request on.",
           "placeholder": "us-east-2",
           "learnUrl": "https://docs.aws.amazon.com/general/latest/gr/s3.html"
@@ -365,7 +365,7 @@
         {
           "name": "accessKeyId",
           "viewName": "Access key",
-          "type": "string",
+          "type": "vault",
           "description": "This is a parameter taken from the vault to access AWS",
           "placeholder": "AKIAIOSFODNN7EXAMPLE",
           "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
@@ -383,7 +383,7 @@
           "viewName": "Region",
           "type": "autocomplete",
           "autocompleteType": "function",
-          "functionName": "listRegionsAuto",
+          "functionName": "listRegions",
           "description": "The AWS region to make this request on.",
           "placeholder": "us-east-2",
           "learnUrl": "https://docs.aws.amazon.com/general/latest/gr/s3.html"
@@ -397,7 +397,7 @@
         {
           "name": "accessKeyId",
           "viewName": "Access key",
-          "type": "string",
+          "type": "vault",
           "description": "This is a parameter taken from the vault to access AWS",
           "placeholder": "AKIAIOSFODNN7EXAMPLE",
           "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
@@ -415,7 +415,7 @@
           "viewName": "Region",
           "type": "autocomplete",
           "autocompleteType": "function",
-          "functionName": "listRegionsAuto",
+          "functionName": "listRegions",
           "description": "The AWS region to make this request on.",
           "placeholder": "us-east-2",
           "learnUrl": "https://docs.aws.amazon.com/general/latest/gr/s3.html"
