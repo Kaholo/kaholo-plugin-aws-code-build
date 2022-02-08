@@ -8,6 +8,7 @@ module.exports = class CodeBuildService{
     constructor(creds = {accessKeyId, secretAccessKey, region}){
         this.cb = new AWS.CodeBuild(creds);
         this.ec2 = new AWS.EC2(creds);
+        this.lightsail = new AWS.Lightsail(creds);
         this.aws = {};
         this.aws.describeRegions = promisify(this.ec2.describeRegions).bind(this.ec2);
         for (const func of codeBuildAsyncs){
@@ -22,7 +23,7 @@ module.exports = class CodeBuildService{
             region: parsers.autocomplete(params.region || settings.region)
         });
     }
-    
+
     async startBuild({project, sourceVersion, debugSessionEnabled}){
         if (!project) throw "Must provide a project to create the build of."
         try {
@@ -37,7 +38,7 @@ module.exports = class CodeBuildService{
 ${error.message || JSON.stringify(error)}'`
         }
     }
-    
+
     async stopBuild({build}){
         if (!build) throw "Must provide a build to stop."
         try {
@@ -49,7 +50,7 @@ ${error.message || JSON.stringify(error)}'`
 ${error.message || JSON.stringify(error)}'`
         }
     }
-    
+
     async getBuilds({builds}){
         if (!builds) throw "Must provide a build to return information about."
         if (!Array.isArray(builds)) builds = [builds];
@@ -62,16 +63,16 @@ ${error.message || JSON.stringify(error)}'`
 ${error.message || JSON.stringify(error)}'`
         }
     }
-    
+
     async createProjectFromJson({project}){
-        if (!project || !Object.keys(project).length){ 
+        if (!project || !Object.keys(project).length){
             throw "Didn't provide an object or provided object was empty.";
         }
         return this.cb.createProject(project).promise();
     }
-    
+
     async updateProjectFromJson({project}){
-        if (!project || !Object.keys(project).length){ 
+        if (!project || !Object.keys(project).length){
             throw "Didn't provide an object or provided object was empty.";
         }
         return this.cb.updateProject(project).promise();
@@ -94,19 +95,19 @@ ${error.message || JSON.stringify(error)}'`
         }
         return this.cb.deleteProject({name: project}).promise();
     }
-    
+
     async listRegions(){
         const {Regions: result} = await this.aws.describeRegions({});
         return result;
     }
-    
+
     async listProjects({nextToken, getAll}){
         var result = await this.aws.listProjects({
             sortBy: "LAST_MODIFIED_TIME",
             sortOrder: "DESCENDING",
             nextToken
         });
-        if (!getAll || !result.nextToken) return result;        
+        if (!getAll || !result.nextToken) return result;
         const projects = result.projects;
         while (result.nextToken){
             result = await this.listProjects({nextToken: result.nextToken});
@@ -114,7 +115,7 @@ ${error.message || JSON.stringify(error)}'`
         }
         return projects;
     }
-    
+
     async listBuilds({project, nextToken, getAll}){
         var result;
         if (project){
@@ -130,7 +131,7 @@ ${error.message || JSON.stringify(error)}'`
                 nextToken
             });
         }
-        if (!getAll || !result.nextToken) return result;      
+        if (!getAll || !result.nextToken) return result;
         const builds = result.builds;
         while (result.nextToken){
             result = await this.listBuilds({project, nextToken: result.nextToken});
