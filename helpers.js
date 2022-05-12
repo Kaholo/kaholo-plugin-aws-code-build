@@ -22,7 +22,7 @@ async function fetchRecursively(awsClient, fetchOptions = {}, payload = {}) {
   return fetchedItems.concat(recursiveItems);
 }
 
-async function resolveJsonConfiguration(jsonConfigParam) {
+async function resolveJsonConfigurationParam(jsonConfigParam) {
   if (_.isPlainObject(jsonConfigParam)) {
     return jsonConfigParam;
   }
@@ -63,6 +63,6 @@ async function pathExists(path) {
 }
 
 module.exports = {
-  resolveJsonConfiguration,
+  resolveJsonConfigurationParam,
   fetchRecursively,
 };

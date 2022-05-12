@@ -1,4 +1,4 @@
-const { resolveJsonConfiguration } = require("./helpers");
+const { resolveJsonConfigurationParam } = require("./helpers");
 
 function prepareStartBuildPayload(params) {
   return {
@@ -21,7 +21,7 @@ function prepareGetBuildsPayload(params) {
 }
 
 function prepareJsonProjectRelatedPayload(params) {
-  return resolveJsonConfiguration(params.projectJson);
+  return resolveJsonConfigurationParam(params.projectJson);
 }
 
 function prepareGetProjectPayload(params) {
