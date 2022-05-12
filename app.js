@@ -15,10 +15,10 @@ const simpleAwsMethods = {
   deleteProject: awsPluginLibrary.generateAwsMethod("deleteProject", payloadFunctions.prepareDeleteProjectPayload),
 };
 
-function listProjects(codeBuildClient, params) {
+async function listProjects(codeBuildClient, params) {
   const payload = payloadFunctions.prepareListProjectsPayload(params);
 
-  return fetchRecursively(
+  const projects = await fetchRecursively(
     codeBuildClient,
     {
       methodName: "listProjects",
@@ -28,6 +28,8 @@ function listProjects(codeBuildClient, params) {
   ).catch((error) => {
     throw new Error(`Failed to list projects: ${error.message || JSON.stringify(error)}`);
   });
+
+  return { projects };
 }
 
 async function listBuilds(codeBuildClient, params) {
@@ -59,7 +61,9 @@ async function listBuilds(codeBuildClient, params) {
     });
   }
 
-  return resultPromise;
+  const builds = await resultPromise;
+
+  return { builds };
 }
 
 module.exports = awsPluginLibrary.bootstrap(
