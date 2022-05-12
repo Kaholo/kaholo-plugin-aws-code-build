@@ -45,7 +45,7 @@ function prepareListProjectsPayload() {
 
 function prepareListBuildsPayload(params) {
   return {
-    project: params.project,
+    projectName: params.project,
     sortOrder: "DESCENDING",
   };
 }

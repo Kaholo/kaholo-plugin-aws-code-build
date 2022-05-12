@@ -34,15 +34,14 @@ async function listProjects(codeBuildClient, params) {
 
 async function listBuilds(codeBuildClient, params) {
   const payload = payloadFunctions.prepareListBuildsPayload(params);
-  const outputDataPath = "builds";
 
   let resultPromise;
-  if (payload.project) {
+  if (payload.projectName) {
     resultPromise = fetchRecursively(
       codeBuildClient,
       {
         methodName: "listBuildsForProject",
-        outputDataPath,
+        outputDataPath: "ids",
       },
       payload,
     ).catch((error) => {
@@ -53,9 +52,9 @@ async function listBuilds(codeBuildClient, params) {
       codeBuildClient,
       {
         methodName: "listBuilds",
-        outputDataPath,
+        outputDataPath: "ids",
       },
-      _.omitBy(payload, "project"),
+      _.omit(payload, "projectName"),
     ).catch((error) => {
       throw new Error(`Failed to list builds: ${error.message || JSON.stringify(error)}`);
     });
