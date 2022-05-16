@@ -1,74 +1,84 @@
-const parsers = require("./parsers");
-const CodeBuildService = require('./aws.codebuild.service');
+const awsPluginLibrary = require("kaholo-aws-plugin-library");
+const _ = require("lodash");
+const AWS = require("aws-sdk");
+const { fetchRecursively } = require("./helpers");
+const autocomplete = require("./autocomplete");
+const payloadFunctions = require("./payload-functions");
 
-async function startBuild(action, settings){
-    const { project, sourceVersion, debugSessionEnabled } = action.params;
-    const client = CodeBuildService.from(action.params, settings);
-    return client.startBuild({
-        project: parsers.autocomplete(project),
-        sourceVersion: parsers.string(sourceVersion),
-        debugSessionEnabled: parsers.boolean(debugSessionEnabled)
+const simpleAwsMethods = {
+  startBuild: awsPluginLibrary.generateAwsMethod("startBuild", payloadFunctions.prepareStartBuildPayload),
+  stopBuild: awsPluginLibrary.generateAwsMethod("stopBuild", payloadFunctions.prepareStopBuildPayload),
+  getBuilds: awsPluginLibrary.generateAwsMethod("batchGetBuilds", payloadFunctions.prepareGetBuildsPayload),
+  createProjectFromJson: awsPluginLibrary.generateAwsMethod("createProject", payloadFunctions.prepareJsonProjectRelatedPayload),
+  updateProjectFromJson: awsPluginLibrary.generateAwsMethod("updateProject", payloadFunctions.prepareJsonProjectRelatedPayload),
+  getProject: awsPluginLibrary.generateAwsMethod("batchGetProjects", payloadFunctions.prepareGetProjectPayload),
+  deleteProject: awsPluginLibrary.generateAwsMethod("deleteProject", payloadFunctions.prepareDeleteProjectPayload),
+};
+
+async function listProjects(codeBuildClient, params) {
+  const payload = payloadFunctions.prepareListProjectsPayload(params);
+
+  const projects = await fetchRecursively(
+    codeBuildClient,
+    {
+      methodName: "listProjects",
+      outputDataPath: "projects",
+    },
+    payload,
+  ).catch((error) => {
+    throw new Error(`Failed to list projects: ${error.message || JSON.stringify(error)}`);
+  });
+
+  return { projects };
+}
+
+async function listBuilds(codeBuildClient, params) {
+  const payload = payloadFunctions.prepareListBuildsPayload(params);
+
+  let resultPromise;
+  if (payload.projectName) {
+    resultPromise = fetchRecursively(
+      codeBuildClient,
+      {
+        methodName: "listBuildsForProject",
+        outputDataPath: "ids",
+      },
+      payload,
+    ).catch((error) => {
+      throw new Error(`Failed to list builds: ${error.message || JSON.stringify(error)}`);
     });
+  } else {
+    resultPromise = fetchRecursively(
+      codeBuildClient,
+      {
+        methodName: "listBuilds",
+        outputDataPath: "ids",
+      },
+      _.omit(payload, "projectName"),
+    ).catch((error) => {
+      throw new Error(`Failed to list builds: ${error.message || JSON.stringify(error)}`);
+    });
+  }
+
+  const builds = await resultPromise;
+
+  return { builds };
 }
 
-async function stopBuild(action, settings){
-	const build = parsers.autocomplete(action.params.build);
-    const client = CodeBuildService.from(action.params, settings);
-    return client.stopBuild({build});
-}
-
-async function getBuilds(action, settings){
-	const builds = parsers.autocomplete(action.params.builds);
-    const client = CodeBuildService.from(action.params, settings);
-    return client.getBuilds({builds});
-}
-
-async function createProjectFromJson(action, settings){
-	const project = parsers.objectOrFromPath(action.params.projectJson);
-    const client = CodeBuildService.from(action.params, settings);
-    return client.createProjectFromJson({project});
-}
-
-async function updateProjectFromJson(action, settings){
-	const project = parsers.objectOrFromPath(action.params.projectJson);
-    const client = CodeBuildService.from(action.params, settings);
-    return client.updateProjectFromJson({project});
-}
-
-async function getProject(action, settings){
-	const project = parsers.autocomplete(action.params.project);
-    const client = CodeBuildService.from(action.params, settings);
-    return client.getProject({project});
-}
-
-async function deleteProject(action, settings){
-	const project = parsers.autocomplete(action.params.project);
-    const client = CodeBuildService.from(action.params, settings);
-    return client.deleteProject({project});
-}
-
-async function listProjects(action, settings){
-    const client = CodeBuildService.from(action.params, settings);
-    return client.listProjects({getAll: true});
-}
-
-async function listBuilds(action, settings){
-	const project = parsers.autocomplete(action.params.project);
-    const client = CodeBuildService.from(action.params, settings);
-    return client.listBuilds({project, getAll: true});
-} 
-
-module.exports = {
-    startBuild,
-	stopBuild,
-	getBuilds,
-    createProjectFromJson,
-    updateProjectFromJson,
-    getProject,
-    deleteProject,
-    // list methods
+module.exports = awsPluginLibrary.bootstrap(
+  AWS.CodeBuild,
+  {
+    ...simpleAwsMethods,
     listProjects,
     listBuilds,
-    // Autocomplete Functions
-    ...require("./autocomplete")
-}
+  },
+  {
+    listRegions: awsPluginLibrary.autocomplete.listRegions,
+    ...autocomplete,
+  },
+  {
+    ACCESS_KEY: "accessKeyId",
+    SECRET_KEY: "secretAccessKey",
+    REGION: "region",
+  },
+);

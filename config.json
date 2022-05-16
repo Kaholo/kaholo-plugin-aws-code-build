@@ -1,11 +1,11 @@
 {
-  "id": "aws-codebuild",
-  "name": "AWS CodeBuild",
+  "name": "aws-codebuild",
+  "viewName": "AWS CodeBuild",
   "type": "executer",
   "imgUrl": "logo.png",
   "execProgram": "node",
   "main": "app.js",
-  "version": "1.1.4",
+  "version": "1.2.0",
   "description": "Integration with AWS CodeBuild API.",
   "category": "CI/CD",
   "keywords": [
@@ -78,7 +78,8 @@
           "functionName": "listProjectsAuto",
           "description": "Project resource configures how AWS CodeBuild builds your source code. It tells CodeBuild where to get the source code and which build environment to use.",
           "placeholder": "myproject",
-          "learnUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codebuild-project.html"
+          "learnUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codebuild-project.html",
+          "required": true
         },
         {
           "name": "sourceVersion",
@@ -145,7 +146,8 @@
           "functionName": "listBuildsAuto",
           "description": "Name of the build to stop.",
           "placeholder": "mybuild",
-          "learnUrl": "https://docs.aws.amazon.com/codebuild/latest/userguide/stop-build.html"
+          "learnUrl": "https://docs.aws.amazon.com/codebuild/latest/userguide/stop-build.html",
+          "required": true
         }
       ]
     },
@@ -196,7 +198,8 @@
           "autocompleteType": "function",
           "functionName": "listBuildsAuto",
           "description": "Specify multiple builds to get by an array of IDs.",
-          "learnUrl": "https://docs.aws.amazon.com/codebuild/latest/userguide/view-build-details.html"
+          "learnUrl": "https://docs.aws.amazon.com/codebuild/latest/userguide/view-build-details.html",
+          "required": true
         }
       ]
     },
@@ -236,7 +239,8 @@
           "type": "text",
           "description": "Updating our project using a JSON file.",
           "placeholder": "C:/Work/TestProject.json",
-          "learnUrl": "https://docs.aws.amazon.com/codebuild/latest/userguide/getting-started-cli-create-build-project.html"
+          "learnUrl": "https://docs.aws.amazon.com/codebuild/latest/userguide/getting-started-cli-create-build-project.html",
+          "required": true
         }
       ]
     },
@@ -270,7 +274,8 @@
           "type": "text",
           "description": "The JSON object, containing the parameters to update the CodeBuild project from. Can be passed either as it's local path on the agent or from code as a JavaScript object.",
           "placeholder": "C:/Work/TestProject.json",
-          "learnUrl": "https://docs.aws.amazon.com/codebuild/latest/userguide/change-project-cli.html"
+          "learnUrl": "https://docs.aws.amazon.com/codebuild/latest/userguide/change-project-cli.html",
+          "required": true
         }
       ]
     },
@@ -312,7 +317,8 @@
           "functionName": "listProjectsAuto",
           "description": "Project resource configures how AWS CodeBuild builds your source code. It tells CodeBuild where to get the source code and which build environment to use.",
           "placeholder": "myproject",
-          "learnUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codebuild-project.html"
+          "learnUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codebuild-project.html",
+          "required": true
         }
       ]
     },
@@ -354,7 +360,8 @@
           "functionName": "listProjectsAuto",
           "description": "Project resource configures how AWS CodeBuild builds your source code. It tells CodeBuild where to get the source code and which build environment to use.",
           "placeholder": "myproject",
-          "learnUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codebuild-project.html"
+          "learnUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codebuild-project.html",
+          "required": true
         }
       ]
     },
