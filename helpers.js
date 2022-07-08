@@ -62,7 +62,20 @@ async function pathExists(path) {
   }
 }
 
+function splitArrayIntoChunks(array, chunkSize) {
+  return array.reduce((acc, cur) => {
+    const lastChunk = acc[acc.length - 1];
+    if (lastChunk.length < chunkSize) {
+      lastChunk.push(cur);
+    } else {
+      acc.push([cur]);
+    }
+    return acc;
+  }, [[]]);
+}
+
 module.exports = {
   resolveJsonConfigurationParam,
+  splitArrayIntoChunks,
   fetchRecursively,
 };

@@ -143,7 +143,7 @@
           "viewName": "Build",
           "type": "autocomplete",
           "autocompleteType": "function",
-          "functionName": "listBuildsAuto",
+          "functionName": "listBuildsInProgressAuto",
           "description": "Name of the build to stop.",
           "placeholder": "mybuild",
           "learnUrl": "https://docs.aws.amazon.com/codebuild/latest/userguide/stop-build.html",
@@ -436,6 +436,42 @@
           "description": "Project resource configures how AWS CodeBuild builds your source code. It tells CodeBuild where to get the source code and which build environment to use.",
           "placeholder": "myproject",
           "learnUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codebuild-project.html"
+        },
+        {
+          "name": "status",
+          "viewName": "Status",
+          "description": "Get builds with selected status only.",
+          "type": "options",
+          "options": [
+            {
+              "id": "ALL",
+              "name": "All"
+            },
+            {
+              "id": "SUCCEEDED",
+              "name": "Succeeded"
+            },
+            {
+              "id": "FAILED",
+              "name": "Failed"
+            },
+            {
+              "id": "FAULT",
+              "name": "Fault"
+            },
+            {
+              "id": "TIMED_OUT",
+              "name": "Timed Out"
+            },
+            {
+              "id": "IN_PROGRESS",
+              "name": "In Progress"
+            },
+            {
+              "id": "STOPPED",
+              "name": "Stopped"
+            }
+          ]
         }
       ]
     }

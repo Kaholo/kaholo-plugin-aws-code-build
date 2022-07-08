@@ -44,10 +44,13 @@ function prepareListProjectsPayload() {
 }
 
 function prepareListBuildsPayload(params) {
-  return {
-    projectName: params.project,
-    sortOrder: "DESCENDING",
-  };
+  const payload = {};
+
+  if (params.project) {
+    payload.projectName = params.project;
+  }
+
+  return payload;
 }
 
 module.exports = {
