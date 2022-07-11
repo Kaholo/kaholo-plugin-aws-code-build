@@ -4,9 +4,8 @@ const { fetchRecursively, splitArrayIntoChunks } = require("./helpers");
 async function listProjects(codeBuildClient, params) {
   const payload = payloadFunctions.prepareListProjectsPayload(params);
 
-  let projects;
   try {
-    projects = await fetchRecursively(
+    const projects = await fetchRecursively(
       codeBuildClient,
       {
         methodName: "listProjects",
@@ -14,11 +13,11 @@ async function listProjects(codeBuildClient, params) {
       },
       payload,
     );
+
+    return { projects };
   } catch (error) {
     throw new Error(`Failed to list projects: ${error.message || JSON.stringify(error)}`);
   }
-
-  return { projects };
 }
 
 async function listBuilds(codeBuildClient, params) {
