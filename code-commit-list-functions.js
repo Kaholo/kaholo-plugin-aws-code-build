@@ -4,16 +4,19 @@ const { fetchRecursively, splitArrayIntoChunks } = require("./helpers");
 async function listProjects(codeBuildClient, params) {
   const payload = payloadFunctions.prepareListProjectsPayload(params);
 
-  const projects = await fetchRecursively(
-    codeBuildClient,
-    {
-      methodName: "listProjects",
-      outputDataPath: "projects",
-    },
-    payload,
-  ).catch((error) => {
+  let projects;
+  try {
+    projects = await fetchRecursively(
+      codeBuildClient,
+      {
+        methodName: "listProjects",
+        outputDataPath: "projects",
+      },
+      payload,
+    );
+  } catch (error) {
     throw new Error(`Failed to list projects: ${error.message || JSON.stringify(error)}`);
-  });
+  }
 
   return { projects };
 }
@@ -21,14 +24,19 @@ async function listProjects(codeBuildClient, params) {
 async function listBuilds(codeBuildClient, params) {
   const payload = payloadFunctions.prepareListBuildsPayload(params);
 
-  const buildIds = await fetchRecursively(
-    codeBuildClient,
-    {
-      methodName: payload.projectName ? "listBuildsForProject" : "listBuilds",
-      outputDataPath: "ids",
-    },
-    payload,
-  );
+  let buildIds;
+  try {
+    buildIds = await fetchRecursively(
+      codeBuildClient,
+      {
+        methodName: payload.projectName ? "listBuildsForProject" : "listBuilds",
+        outputDataPath: "ids",
+      },
+      payload,
+    );
+  } catch (error) {
+    throw new Error(`Failed to list build ids: ${error.message || JSON.stringify(error)}`);
+  }
 
   const buildIdsChunks = splitArrayIntoChunks(buildIds, 100);
 
