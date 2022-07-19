@@ -1,4 +1,4 @@
-const awsPluginLibrary = require("kaholo-aws-plugin-library");
+const awsPluginLibrary = require("@kaholo/aws-plugin-library");
 const AWS = require("aws-sdk");
 
 const autocomplete = require("./autocomplete");
