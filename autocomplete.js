@@ -1,4 +1,4 @@
-const awsPluginLibrary = require("kaholo-aws-plugin-library");
+const awsPluginLibrary = require("@kaholo/aws-plugin-library");
 const { listBuilds } = require("./code-commit-list-functions");
 const { fetchRecursively } = require("./helpers");
 
