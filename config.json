@@ -237,8 +237,9 @@
           "name": "projectJson",
           "viewName": "Project JSON",
           "type": "text",
-          "description": "Updating our project using a JSON file.",
-          "placeholder": "C:/Work/TestProject.json",
+          "parserType": "object",
+          "description": "JSON object containing project configuration.",
+          "placeholder": "{ \"name\": \"Test Project\" }",
           "learnUrl": "https://docs.aws.amazon.com/codebuild/latest/userguide/getting-started-cli-create-build-project.html",
           "required": true
         }
@@ -272,8 +273,9 @@
           "name": "projectJson",
           "viewName": "Project JSON",
           "type": "text",
-          "description": "The JSON object, containing the parameters to update the CodeBuild project from. Can be passed either as it's local path on the agent or from code as a JavaScript object.",
-          "placeholder": "C:/Work/TestProject.json",
+          "parserType": "object",
+          "description": "JSON object containing project configuration.",
+          "placeholder": "{ \"name\": \"Test Project\" }",
           "learnUrl": "https://docs.aws.amazon.com/codebuild/latest/userguide/change-project-cli.html",
           "required": true
         }
