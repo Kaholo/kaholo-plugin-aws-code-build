@@ -19,19 +19,24 @@
     "instance",
     "service"
   ],
+  "auth": {
+    "authId": "awsAccount",
+    "params": [
+      {
+        "name": "accessKeyId",
+        "viewName": "Access key",
+        "type": "vault",
+        "description": "The access key ID of the default user to use to authenticate to AWS."
+      },
+      {
+        "name": "secretAccessKey",
+        "viewName": "Secret key",
+        "type": "vault",
+        "description": "The access key secret of the default user to use to authenticate to AWS."
+      }
+    ]
+  },
   "settings": [
-    {
-      "name": "accessKeyId",
-      "viewName": "Access key",
-      "type": "vault",
-      "description": "The access key ID of the default user to use to authenticate to AWS."
-    },
-    {
-      "name": "secretAccessKey",
-      "viewName": "Secret key",
-      "type": "vault",
-      "description": "The access key secret of the default user to use to authenticate to AWS."
-    },
     {
       "name": "region",
       "viewName": "Region",
@@ -44,22 +49,6 @@
       "name": "startBuild",
       "viewName": "Start Build",
       "params": [
-        {
-          "name": "accessKeyId",
-          "viewName": "Access key",
-          "type": "vault",
-          "description": "This is a parameter taken from the vault to access AWS",
-          "placeholder": "AKIAIOSFODNN7EXAMPLE",
-          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
-        },
-        {
-          "name": "secretAccessKey",
-          "viewName": "Secret key",
-          "type": "vault",
-          "description": "This is a parameter taken from the vault to access AWS",
-          "placeholder": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
-          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
-        },
         {
           "name": "region",
           "viewName": "Region",
@@ -103,22 +92,6 @@
       "viewName": "Stop Build",
       "params": [
         {
-          "name": "accessKeyId",
-          "viewName": "Access key",
-          "type": "vault",
-          "description": "This is a parameter taken from the vault to access AWS",
-          "placeholder": "AKIAIOSFODNN7EXAMPLE",
-          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
-        },
-        {
-          "name": "secretAccessKey",
-          "viewName": "Secret key",
-          "type": "vault",
-          "description": "This is a parameter taken from the vault to access AWS",
-          "placeholder": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
-          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
-        },
-        {
           "name": "region",
           "viewName": "Region",
           "type": "autocomplete",
@@ -156,22 +129,6 @@
       "viewName": "Get Builds",
       "params": [
         {
-          "name": "accessKeyId",
-          "viewName": "Access key",
-          "type": "vault",
-          "description": "This is a parameter taken from the vault to access AWS",
-          "placeholder": "AKIAIOSFODNN7EXAMPLE",
-          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
-        },
-        {
-          "name": "secretAccessKey",
-          "viewName": "Secret key",
-          "type": "vault",
-          "description": "This is a parameter taken from the vault to access AWS",
-          "placeholder": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
-          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
-        },
-        {
           "name": "region",
           "viewName": "Region",
           "type": "autocomplete",
@@ -208,22 +165,6 @@
       "viewName": "Create Project From JSON",
       "params": [
         {
-          "name": "accessKeyId",
-          "viewName": "Access key",
-          "type": "vault",
-          "description": "This is a parameter taken from the vault to access AWS",
-          "placeholder": "AKIAIOSFODNN7EXAMPLE",
-          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
-        },
-        {
-          "name": "secretAccessKey",
-          "viewName": "Secret key",
-          "type": "vault",
-          "description": "This is a parameter taken from the vault to access AWS",
-          "placeholder": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
-          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
-        },
-        {
           "name": "region",
           "viewName": "Region",
           "type": "autocomplete",
@@ -250,18 +191,6 @@
       "viewName": "Update Project From JSON",
       "params": [
         {
-          "name": "accessKeyId",
-          "viewName": "Access key",
-          "type": "vault",
-          "description": "The access key ID of the user to use to authenticate to AWS for this request."
-        },
-        {
-          "name": "secretAccessKey",
-          "viewName": "Secret key",
-          "type": "vault",
-          "description": "The access key secret of the user to use to authenticate to AWS for this request."
-        },
-        {
           "name": "region",
           "viewName": "Region",
           "type": "autocomplete",
@@ -285,22 +214,6 @@
       "name": "getProject",
       "viewName": "Get Project",
       "params": [
-        {
-          "name": "accessKeyId",
-          "viewName": "Access key",
-          "type": "vault",
-          "description": "This is a parameter taken from the vault to access AWS",
-          "placeholder": "AKIAIOSFODNN7EXAMPLE",
-          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
-        },
-        {
-          "name": "secretAccessKey",
-          "viewName": "Secret key",
-          "type": "vault",
-          "description": "This is a parameter taken from the vault to access AWS",
-          "placeholder": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
-          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
-        },
         {
           "name": "region",
           "viewName": "Region",
@@ -329,22 +242,6 @@
       "viewName": "Delete Project",
       "params": [
         {
-          "name": "accessKeyId",
-          "viewName": "Access key",
-          "type": "vault",
-          "description": "This is a parameter taken from the vault to access AWS",
-          "placeholder": "AKIAIOSFODNN7EXAMPLE",
-          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
-        },
-        {
-          "name": "secretAccessKey",
-          "viewName": "Secret key",
-          "type": "vault",
-          "description": "This is a parameter taken from the vault to access AWS",
-          "placeholder": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
-          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
-        },
-        {
           "name": "region",
           "viewName": "Region",
           "type": "autocomplete",
@@ -372,22 +269,6 @@
       "viewName": "List Projects",
       "params": [
         {
-          "name": "accessKeyId",
-          "viewName": "Access key",
-          "type": "vault",
-          "description": "This is a parameter taken from the vault to access AWS",
-          "placeholder": "AKIAIOSFODNN7EXAMPLE",
-          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
-        },
-        {
-          "name": "secretAccessKey",
-          "viewName": "Secret key",
-          "type": "vault",
-          "description": "This is a parameter taken from the vault to access AWS.",
-          "placeholder": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
-          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
-        },
-        {
           "name": "region",
           "viewName": "Region",
           "type": "autocomplete",
@@ -403,22 +284,6 @@
       "name": "listBuilds",
       "viewName": "List Builds",
       "params": [
-        {
-          "name": "accessKeyId",
-          "viewName": "Access key",
-          "type": "vault",
-          "description": "This is a parameter taken from the vault to access AWS",
-          "placeholder": "AKIAIOSFODNN7EXAMPLE",
-          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
-        },
-        {
-          "name": "secretAccessKey",
-          "viewName": "Secret key",
-          "type": "vault",
-          "description": "This is a parameter taken from the vault to access AWS",
-          "placeholder": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
-          "learnUrl": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey"
-        },
         {
           "name": "region",
           "viewName": "Region",
